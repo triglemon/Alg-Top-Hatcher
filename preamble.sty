@@ -1,0 +1,128 @@
+% general
+\usepackage{enumerate} % better enumerate
+
+% math packages
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, bm, mathtools, amssymb}
+\usepackage{graphicx, float, caption}
+\usepackage{blkarray} % show matrices with letters at borders
+\usepackage{siunitx} % for measurement units
+\usepackage{yfonts} % fraktur :D
+
+\usepackage{color}   %May be necessary if you want to color links
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true, %set true if you want colored links
+    linktoc=all,     %set to all if you want both sections and subsections linked
+    linkcolor=blue,  %choose some color if you want links to stand out
+}
+
+% theorems
+\usepackage{amsthm, mdframed}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}{Corollary}[theorem]
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem{case}{Case}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{exercise}[example]{Exercise}
+
+\renewcommand\qedsymbol{$\blacksquare$}
+
+% typesetting packages
+\usepackage{hyperref} % hyperlinks
+\usepackage{fancyvrb} % font options for verbatim
+\usepackage{soul} % font options
+\sethlcolor{lightgray} % highlight color 
+
+% stackengine
+\usepackage{stackengine} %stacking elements
+\setlength{\columnsep}{1cm}
+
+% titling
+\usepackage{titling} % drop vertical space before the title
+\renewcommand\maketitlehooka{\null\mbox{}\vfill}
+\renewcommand\maketitlehookd{\vfill\null}
+
+% tikz
+\usepackage{tikz, tikz-cd}
+\usetikzlibrary{automata, positioning, arrows.meta}
+
+% math shit
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\newcommand{\R}{\mathbb{R}} 
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\renewcommand{\O}{\mathcal{O}}
+\renewcommand{\L}{\mathcal{L}}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\Img}{img}
+\DeclareMathOperator{\Range}{range}
+\DeclareMathOperator{\Rref}{rref}
+\DeclareMathOperator{\Rank}{rank}
+\DeclareMathOperator{\Null}{null}
+\DeclareMathOperator{\Proj}{proj}
+\DeclareMathOperator{\Dim}{dim}
+\newcommand{\cat}[1]{{\normalfont\textbf{#1}}}
+\newcommand{\toitself}{\mathbin{\scalebox{.85}{%
+    \lefteqn{\scalebox{.5}{$\blacktriangleleft$}}\raisebox{.34ex}{$\supset$}}}} % LOL
+
+% misc
+\DeclareUnicodeCharacter{2212}{-}
+
+    
+% Environment for entering source code======================================
+% Example:
+% 
+% 1  function p
+% 2      for i:1..10
+% 3           i *= 2
+% 4           i -= 1
+% 5      end for
+%    end p
+% 
+% this can be typed as follows:
+%
+% \begin{code}
+% \firstline          <--- to number the first line of a code environment
+% function p \nl      <--- \nl ends line and makes next line a Numbered Line
+% \n for i:1..10 \nl  <--- \n increases the level of indentation ("next")
+%    \n i*=2 \nl
+%       i-=1 \nl
+%    \p end for \ul   <--- \ul ends line and makes next line an Unnumbered Line 
+% \p end p            <--- \p decreases the level of indentation ("previous")
+% \end{code}
+% 
+% You can use \labels anywhere in the code and \lref to refer to the line
+% number.  (This is done using smartref package.)
+
+\newcounter{linenum}
+\def\codeTabSpace{\hspace*{6mm}}
+\newenvironment{code}%
+{\begin{tabbing}%
+\codeTabSpace \= \hspace*{30mm} \= \hspace*{40mm} \= \hspace*{42mm} \= \kill%
+}%
+{\end{tabbing}%
+}
+\newcounter{ind}
+\newcommand{\n}{\addtocounter{ind}{7}\hspace*{7mm}}
+\newcommand{\p}{\addtocounter{ind}{-7}\hspace*{-7mm}}
+\newcommand{\nl}{\\\stepcounter{linenum}{\scriptsize \arabic{linenum}}\>\hspace*{\value{ind}mm}}
+\newcommand{\firstline}{\stepcounter{linenum}{\scriptsize \arabic{linenum}}\>}
+\newcommand{\lref}[1]{\linenumref{#1}} % use this to refer to a line number
+% End of stuff for entering source code=====================================
+
+
+
+\newenvironment{sketch}
+{\textit{sketch.}}
+{\hfill \qedsymbol\\}
