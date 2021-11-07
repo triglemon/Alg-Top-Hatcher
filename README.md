@@ -1,1 +1,1 @@
-Hatcher notes
+# Hatcher Study Project
